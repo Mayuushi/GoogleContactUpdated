@@ -101,7 +101,6 @@ public class HomeController {
         return "edit-contact";
     }
 
-    // ✅ Handle Contact Update (Using Delete-Then-Add)
     @PostMapping("/contacts/update")
     public String updateContact(OAuth2AuthenticationToken authentication,
                                 @RequestParam String id,
