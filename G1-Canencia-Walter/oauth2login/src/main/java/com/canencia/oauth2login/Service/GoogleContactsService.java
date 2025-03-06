@@ -74,7 +74,6 @@ public class GoogleContactsService {
     }
 
     // ✅ Add New Contact
-    // ✅ Add New Contact (Modified for Debugging)
     public String addContact(OAuth2AuthenticationToken authentication, String firstName, String lastName, String email, String phone) {
         String accessToken = getAccessToken(authentication);
         if (accessToken == null) {
@@ -133,7 +132,6 @@ public class GoogleContactsService {
             resourceName = "people/" + resourceName;
         }
 
-        // ✅ Correct API URL
         String deleteUrl = "https://people.googleapis.com/v1/" + resourceName + ":deleteContact";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -160,10 +158,8 @@ public class GoogleContactsService {
     public String updateContact(OAuth2AuthenticationToken authentication, String resourceName, String firstName, String lastName, String email, String phone) {
         System.out.println("🔄 Updating Contact ID (Workaround): " + resourceName);
 
-        // Step 1: Delete the old contact
         deleteContact(authentication, resourceName);
 
-        // Step 2: Create a new contact with the updated details
         return addContact(authentication, firstName, lastName, email, phone);
     }
 
